@@ -24,6 +24,7 @@ export {
   default as RDGeoJSON,
   defaultStyle as rdGeoJSONDefaultStyle,
 } from './components/RDGeoJSON'
+export { default as RDFeatureCollection } from './components/RDFeatureCollection'
 export { default as Scale } from './components/Scale'
 export { default as ViewerContainer } from './components/ViewerContainer'
 export { default as WfsLayer } from './components/WfsLayer'

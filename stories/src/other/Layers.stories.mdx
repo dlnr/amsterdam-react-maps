@@ -5,13 +5,16 @@ import {
   BaseLayer,
   WfsLayer,
   RDGeoJSON,
+  RDFeatureCollection,
   constants,
 } from '@amsterdam/arm-core'
 import { DomEvent } from 'leaflet'
 import { NonTiledLayer } from '@amsterdam/arm-nontiled'
 import { GeoJSON } from '@amsterdam/react-maps'
 import geoJSONStub from '../stubs/geoJSON.json'
+import rdGeoJSON2Stub from '../stubs/rdGeoJSON2.json'
 import RDGeoJSONStub from '../stubs/rdGeoJSON.json'
+// import RDFeatureCollectionStub from '../stubs/rdFeatureCollectionJSON.json'
 
 <Meta title="Other/Layers" decorators={[withKnobs]} />
 
@@ -150,6 +153,42 @@ import RDGeoJSONStub from '../stubs/rdGeoJSON.json'
             layer.on('click', (e) => {
               DomEvent.stopPropagation(e)
               layer.openPopup()
+            })
+          },
+        }}
+      />
+      <BaseLayer />
+    </Map>
+  </Story>
+</Preview>
+
+## GeoJSON 2
+
+<Preview>
+  <Story name="GeoJSON2">
+    <Map
+      fullScreen
+      options={{
+        ...constants.DEFAULT_AMSTERDAM_MAPS_OPTIONS,
+        zoom: 10,
+        center: [52.3711013, 4.8893335],
+      }}
+    >
+      <RDFeatureCollection
+        args={[rdGeoJSON2Stub]}
+        options={{
+          onEachFeature: (feature, layer) => {
+            {
+              /* layer.bindPopup(
+              `<p>Stadsdeel: ${feature.properties.stadsdeel}</p><p>Straatnaam: ${feature.properties.straatnaam}</p>`,
+            ) */
+            }
+            layer.on('click', (e) => {
+              DomEvent.stopPropagation(e)
+              console.log('click', feature)
+              {
+                /* layer.openPopup() */
+              }
             })
           },
         }}
